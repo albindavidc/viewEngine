@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= post.title %></title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-R0XSLjqZvZuPGB+j7hjVsswG6PzpHT+7TKyzS6j6ji9ElK1+K9QvDxoRnDnQQA7z" crossorigin="anonymous">
+</head>
+<body>
+  <h1><%= post.title %></h1>
+  <p>By <%= post.author %> on <%= post.date %></p>
+  <p><%= post.content %></p>
+
+  <h2>Comments (<%= post.comments.length %>)</h2>
+  <% if (post.comments.length > 0) { %>
+    <ul class="list-group">
+      <% for (const comment of post.comments) { %>
+        <li class="list-group-item">
+          <b><%= comment.author %></b> - <%= comment.text %>
+        </li>
+      <% } %>
+    </ul>
+  <% } else { %>
+    <p>No comments yet.</p>
+  <% } %>
+
+  <form method="POST">
+    <label for="comment">Leave a comment:</label>
+    <textarea id="comment" name="comment"></textarea>
+    <
